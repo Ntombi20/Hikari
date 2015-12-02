@@ -4,8 +4,8 @@ var express = require('express'),
     app = express(),
     myConnection = require('express-myconnection'),
     multer = require('multer'),
-    Pic = require('./routes/pic'),
-    PicDataService = require('./dataServices/picDataService'),
+    Place = require('./routes/place'),
+    PlaceDataService = require('./dataServices/placeDataService'),
     mysql = require('mysql'),
     ConnectionProvider = require('./routes/connectionProvider');
 
@@ -18,14 +18,14 @@ app.use(bodyParser.json());
 
 var dbOptions = {
      host: 'localhost',
-      user: 'root',
+      user: 'tarcode',
       password: 'coder123',
       port: 3306,
-      database: 'khangela'
+      database: 'pix'
 };
 var serviceSetupCallback = function(connection){
 	return {
-		picDataService : new PicDataService(connection)
+		palceDataService : new PlaceDataService(connection)
 	}
 };
 
@@ -33,14 +33,14 @@ var myConnectionProvider = new ConnectionProvider(dbOptions, serviceSetupCallbac
 app.use(myConnectionProvider.setupProvider);
 app.use(myConnection(mysql, dbOptions, 'pool'));
 
-var pic = new Pic();
+var place = new Place();
 
-app.get('/', pic.land);
-app.get('/places', pic.listPlaces);
+app.get('/', place.land);
+app.post('/places', place.listPlaces);
 
 //app.get('/places', pic.showPics);
 
-app.post('/pictures/upload',multer({ dest: './public/uploads/'}).single('image'), pic.postPic);
+app.post('/places/upload',multer({ dest: './public/uploads/'}).single('image'), place.postPic);
 
 var port = process.env.PORT || 3000;
 var server = app.listen(port, function(){
