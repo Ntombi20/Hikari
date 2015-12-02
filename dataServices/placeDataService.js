@@ -12,7 +12,7 @@ module.exports = function(connection){
     getData('SELECT * FROM img ORDER BY id DESC', cb );
   };
 
-  this.insertPic = function (data, cb) {
+  this.insertPlace = function (data, cb) {
       insertData('INSERT INTO img SET ?', data, cb );
   };
 }

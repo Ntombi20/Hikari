@@ -3,13 +3,13 @@ module.exports = function(){
     res.render('home');
   }
   this.listPlaces = function(req, res, next){
-
+    console.log(req.body);
     res.render('listPlaces');
   }
   this.showPics = function(req, res, next){
     req.services(function(err, services){
-      		var picDataService = services.picDataService;
-          picDataService.showPics(function(err, img){
+      		var placeDataService = services.placeDataService;
+          placeDataService.showPics(function(err, img){
             if(err)	console.log(err);
             res.render('addPlace', {img:img})
           });
@@ -19,10 +19,10 @@ module.exports = function(){
 
   this.postPic = function(req, res, next){
     req.services(function(err, services){
-      		var picDataService = services.picDataService;
+      		var placeDataService = services.placeDataService;
           var path = (req.file.path).replace('public/', '');
           var data = {url : path};
-          picDataService.insertPic(data, function(err, rows){
+          placeDataService.insertPic(data, function(err, rows){
             if(err)	throw err;
             res.redirect('/');
           });
