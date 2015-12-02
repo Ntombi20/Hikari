@@ -18,10 +18,10 @@ app.use(bodyParser.json());
 
 var dbOptions = {
      host: 'localhost',
-      user: 'tarcode',
+      user: 'root',
       password: 'coder123',
       port: 3306,
-      database: 'pix'
+      database: 'khangela'
 };
 var serviceSetupCallback = function(connection){
 	return {
