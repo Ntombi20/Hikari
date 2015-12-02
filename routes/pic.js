@@ -3,6 +3,7 @@ module.exports = function(){
     res.render('home');
   }
   this.listPlaces = function(req, res, next){
+
     res.render('listPlaces');
   }
   this.showPics = function(req, res, next){
