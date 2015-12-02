@@ -1,0 +1,38 @@
+#bg{
+  background-image: url("/img/bg.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  min-height: 45em;
+}
+#logo{
+  background-image: url("/img/logo.png");
+  background-size: cover;
+}
+.input{
+  background-color: transparent;
+  text-align: center;
+  border: 3px solid #444;
+  height: 3em;
+  font-size: 1.5em;
+}
+.form-control{
+  border-radius: 0;
+}
+.btn{
+  border-radius: 0;
+  background-color: #afa92a;
+  font-weight: bold;
+  font-size: 1.5em;
+  color: #fff;
+  height: 3em;
+  width: 7em;
+}
+.distance{
+  color: green;
+}
+a{
+  color: #444;
+}
+a:hover{
+  color:#afa92a;
+}
