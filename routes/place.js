@@ -6,23 +6,31 @@ module.exports = function(){
     console.log(req.body);
     res.render('listPlaces');
   }
-  this.showPics = function(req, res, next){
+  this.showAddPlace = function(req, res, next){
     req.services(function(err, services){
       		var placeDataService = services.placeDataService;
-          placeDataService.showPics(function(err, img){
-            if(err)	console.log(err);
-            res.render('addPlace', {img:img})
+          placeDataService.getCategories(function(err, rows){
+            if(err)	throw err;
+            res.render('addPlace',{categories:rows});
           });
-
     });
   }
 
-  this.postPic = function(req, res, next){
+  this.postPlace = function(req, res, next){
     req.services(function(err, services){
       		var placeDataService = services.placeDataService;
+          var input = JSON.parse(JSON.stringify(req.body));
           var path = (req.file.path).replace('public/', '');
-          var data = {url : path};
-          placeDataService.insertPic(data, function(err, rows){
+          var data = { name: input.name,
+                            description: input.description,
+                            latitude: input.latitude,
+                            longitude: input.longitude,
+                            category_id: input.category,
+                            tel : input.tel,
+                            email: input.email,
+                            img_url: path
+                          }
+          placeDataService.insertPlace(data, function(err, rows){
             if(err)	throw err;
             res.redirect('/');
           });

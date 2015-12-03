@@ -3,8 +3,8 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Dec 02, 2015 at 04:14 PM
--- Server version: 5.5.46-0ubuntu0.14.04.2
+-- Generation Time: Dec 03, 2015 at 12:19 PM
+-- Server version: 5.6.27-0ubuntu0.14.04.1
 -- PHP Version: 5.5.9-1ubuntu4.14
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -28,50 +28,23 @@ SET time_zone = "+00:00";
 
 CREATE TABLE IF NOT EXISTS `category` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` text NOT NULL,
+  `name` varchar(60) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
-
--- --------------------------------------------------------
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
 
 --
--- Table structure for table `contact`
+-- Dumping data for table `category`
 --
 
-CREATE TABLE IF NOT EXISTS `contact` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `address` text NOT NULL,
-  `tel` varchar(200) NOT NULL,
-  `email` varchar(200) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
-
---
--- Dumping data for table `contact`
---
-
-INSERT INTO `contact` (`id`, `address`, `tel`, `email`) VALUES
-(6, 'Tau Street', '021-5635 449', 'tau@gmail.com');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `img`
---
-
-CREATE TABLE IF NOT EXISTS `img` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `profile_url` text NOT NULL,
-  `background_url` text NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
-
---
--- Dumping data for table `img`
---
-
-INSERT INTO `img` (`id`, `profile_url`, `background_url`) VALUES
-(6, 'uploads/d3c0778c7031dacbcbe7e20e7df436f4', 'uploads/705f9df0b9ccac1ea1fab2fee4dfe65e');
+INSERT INTO `category` (`id`, `name`) VALUES
+(1, 'Automotive'),
+(2, 'Clothing'),
+(3, 'Security'),
+(4, 'Food and Beverage'),
+(5, 'Lodging and Tourism'),
+(6, 'Entertainment'),
+(7, 'Health'),
+(8, 'Loans');
 
 -- --------------------------------------------------------
 
@@ -86,13 +59,19 @@ CREATE TABLE IF NOT EXISTS `places` (
   `latitude` float NOT NULL,
   `longitude` float NOT NULL,
   `category_id` int(11) DEFAULT NULL,
-  `img_id` int(11) DEFAULT NULL,
-  `contact_id` int(11) DEFAULT NULL,
+  `tel` varchar(12) NOT NULL,
+  `email` varchar(60) NOT NULL,
+  `img_url` text NOT NULL,
   PRIMARY KEY (`id`),
-  KEY `category_id` (`category_id`),
-  KEY `img_id` (`img_id`),
-  KEY `contact_id` (`contact_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+  KEY `category_id` (`category_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+
+--
+-- Dumping data for table `places`
+--
+
+INSERT INTO `places` (`id`, `name`, `description`, `latitude`, `longitude`, `category_id`, `tel`, `email`, `img_url`) VALUES
+(2, 'asdasdasd', 'asdasdasdasdasd', 1, 2, 6, '1231231233', 'joe@dirt.com', 'uploads/4bc8d3c11144d6695d796c0ac56509c6');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
