@@ -1,3 +1,12 @@
+body{
+  background-color: #333;
+  margin-top: 5em;
+}
+.list-group-item{
+  background-color: #999;
+  border-radius: 0;
+  border: 1px solid #444;
+}
 #bg{
   background-image: url("/img/bg.jpg");
   background-size: cover;
@@ -7,6 +16,25 @@
 #logo{
   background-image: url("/img/logo.png");
   background-size: cover;
+}
+.navbar-inverse{
+  background-color:#fff;
+}
+.navbar-brand{
+  margin: 0;
+  padding-top: 0.4em;
+  padding-left: 0.5em;
+
+}
+.coords{
+  display: none;
+}
+.addCompany{
+  text-decoration: none;
+  font-size: 15px;
+}
+.addCompany:hover{
+  text-decoration: none;
 }
 .input{
   background-color: transparent;
@@ -31,8 +59,14 @@
   color: green;
 }
 a{
-  color: #444;
+  color: #222;
 }
 a:hover{
-  color:#afa92a;
+  color:#222;
+}
+a:clicked{
+  color:#222;
+}
+a:visited{
+  color:#222;
 }

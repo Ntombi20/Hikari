@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Dec 03, 2015 at 12:19 PM
+-- Generation Time: Dec 03, 2015 at 07:02 PM
 -- Server version: 5.6.27-0ubuntu0.14.04.1
 -- PHP Version: 5.5.9-1ubuntu4.14
 
@@ -64,14 +64,7 @@ CREATE TABLE IF NOT EXISTS `places` (
   `img_url` text NOT NULL,
   PRIMARY KEY (`id`),
   KEY `category_id` (`category_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
-
---
--- Dumping data for table `places`
---
-
-INSERT INTO `places` (`id`, `name`, `description`, `latitude`, `longitude`, `category_id`, `tel`, `email`, `img_url`) VALUES
-(2, 'asdasdasd', 'asdasdasdasdasd', 1, 2, 6, '1231231233', 'joe@dirt.com', 'uploads/4bc8d3c11144d6695d796c0ac56509c6');
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
