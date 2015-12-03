@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Dec 03, 2015 at 07:02 PM
+-- Generation Time: Dec 03, 2015 at 07:53 PM
 -- Server version: 5.6.27-0ubuntu0.14.04.1
 -- PHP Version: 5.5.9-1ubuntu4.14
 
@@ -64,7 +64,14 @@ CREATE TABLE IF NOT EXISTS `places` (
   `img_url` text NOT NULL,
   PRIMARY KEY (`id`),
   KEY `category_id` (`category_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+--
+-- Dumping data for table `places`
+--
+
+INSERT INTO `places` (`id`, `name`, `description`, `latitude`, `longitude`, `category_id`, `tel`, `email`, `img_url`) VALUES
+(1, 'Wajid''s Chicken Tikka and Take-Aways', 'Wajid''s Chicken Tikka and Take-Aways caters for all those who love good food. We sell burgers, gatsby''s, chicken kebabs, fast foods, braai foods etc', -34.0705, 18.5573, 4, '073 110 1106', 'n/a@example.com', 'uploads/8e580c547326c5977965a4f577c83b55');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
