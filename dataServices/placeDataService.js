@@ -9,7 +9,7 @@ module.exports = function(connection){
   };
 
   this.getPlaces = function(data, cb){
-    insertData('SELECT * FROM places, category WHERE places.category_id = category.id AND name LIKE ?',data, cb );
+    insertData('SELECT places.name as name, img_url, description, latitude, longitude, category.name as catName, tel, email FROM places, category WHERE places.category_id = category.id AND places.name LIKE ?',[data], cb );
   };
 
   this.getCategories = function(cb){
@@ -19,5 +19,6 @@ module.exports = function(connection){
   this.insertPlace = function(data, cb){
     insertData('INSERT INTO places SET ?', data, cb);
   };
+
 
 }
