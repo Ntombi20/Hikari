@@ -1,0 +1,109 @@
+<div class="container">
+  {{#places}}
+<div class="container">
+    <div class="col-xs-3 col-sm-3">
+      <img class="img-circle img-responsive" src = "/{{img_url}}"/>
+    </div>
+
+    <div class="col-xs-6">
+      <h3>{{name}}</h3>
+      <p><i class="icon-question-sign icon-2x"></i>{{catName}}</p>
+        <p><i class="icon-info icon-2x"></i>{{description}}</p>
+        <p><i class="icon-phone-sign icon-2x"></i>{{tel}}</p>
+        <p><i class="icon-envelope icon-2x"></i>{{email}}</p>
+    </div>
+    <div class="col-xs-3">
+      <h1 class = "distance">{{latitude}} m</h1>
+      <h2  class = "distance">{{longitude}}</h2>
+    </div>
+  </div>
+  <strong>Mode of Travel: </strong>
+<select class = "col-xs-12 form-control" id="mode" onchange="calcRoute();">
+  <option value="DRIVING">Driving</option>
+  <option value="WALKING">Walking</option>
+  <option value="BICYCLING">Bicycling</option>
+  <option value="TRANSIT">Transit</option>
+</select>
+
+  <div class="col-xs-12 col-sm-7" id="map"></div>
+  <div class = "col-xs-12 col-sm-5 well" id="directionsPanel" ></div>
+  <script type="text/javascript">
+  window.initMap = function() {
+    var directionsDisplay = new google.maps.DirectionsRenderer();
+    var latitude = {{latitude}};
+    var longitude  = {{longitude}};
+
+  var lat = latitude;
+  var lon = longitude;
+
+  var myLatLng = {
+      lat: lat,
+      lng: lon
+  };
+    navigator.geolocation.getCurrentPosition(function(location){
+    var start ={lat:location.coords.latitude,
+                lng:location.coords.longitude}
+                var begin = new google.maps.LatLng(start.lat, start.lng);
+                var end = new google.maps.LatLng(myLatLng.lat, myLatLng.lng);
+    map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 15,
+        center: myLatLng
+    });
+    directionsDisplay.setMap(map);
+     directionsDisplay.setPanel(document.getElementById("directionsPanel"));
+
+    var marker = new google.maps.Marker({
+        position: myLatLng,
+        map: map,
+        title: 'You are here'
+    });
+
+    var marker2 = new google.maps.Marker({
+        position: start,
+        map: map,
+        title: 'You are here'
+    });
+    });
+  };
+  window.calcRoute = function() {
+    navigator.geolocation.getCurrentPosition(function(location){
+      var directionsService = new google.maps.DirectionsService();
+      var directionsDisplay = new google.maps.DirectionsRenderer();
+
+    var start ={lat:location.coords.latitude,
+                lng:location.coords.longitude}
+                var latitude = {{latitude}};
+                var longitude  = {{longitude}};
+
+              var lat = latitude;
+              var lon = longitude;
+
+              var myLatLng = {
+                  lat: lat,
+                  lng: lon
+              };
+  var selectedMode = document.getElementById("mode").value;
+  var request = {
+   origin: start,
+   destination: myLatLng,
+   // Note that Javascript allows us to access the constant
+   // using square brackets and a string value as its
+   // "property."
+   travelMode: google.maps.TravelMode[selectedMode]
+  };
+  directionsService.route(request, function(response, status) {
+  if (status == google.maps.DirectionsStatus.OK) {
+   directionsDisplay.setDirections(response);
+  }
+  });
+  map = new google.maps.Map(document.getElementById('map'), {
+      zoom: 15,
+      center: myLatLng
+  });
+  directionsDisplay.setMap(map);
+   directionsDisplay.setPanel(document.getElementById("directionsPanel"));
+    });
+  }
+  </script>
+  {{/places}}
+</div>
