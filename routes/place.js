@@ -60,10 +60,6 @@ module.exports = function(){
                 //place.email = currentPlace.email;
                 return place;
             });*/
-
-
-
-            placeList = placeList.reverse();
             res.render('listPlaces',{places:placeList});
           });
     });
