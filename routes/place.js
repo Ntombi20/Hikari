@@ -80,6 +80,7 @@ module.exports = function(){
     req.services(function(err, services){
       		var placeDataService = services.placeDataService;
           var data = req.params.name;
+          data = data.replace("%20", " ");
           placeDataService.showPlace(data, function(err, rows){
             if(err)	throw err;
             res.render('showPlace',{places:rows[0]});
