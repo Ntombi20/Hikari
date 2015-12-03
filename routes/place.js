@@ -66,9 +66,10 @@ module.exports = function(){
   }
   this.showAddPlace = function(req, res, next){
     req.services(function(err, services){
+      if (err) console.log(err);
       		var placeDataService = services.placeDataService;
           placeDataService.getCategories(function(err, rows){
-            if(err)	throw err;
+            if(err)	console.log(err);
             res.render('addPlace',{categories:rows});
           });
     });
