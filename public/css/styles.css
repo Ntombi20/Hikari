@@ -7,6 +7,10 @@ body{
   border-radius: 0;
   border: 1px solid #444;
 }
+#map{
+  height: 15em;
+  width: 100%;;
+}
 #bg{
   background-image: url("/img/bg.jpg");
   background-size: cover;
