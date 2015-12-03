@@ -1,11 +1,23 @@
 body{
   background-color: #333;
   margin-top: 5em;
+  color: #fff;
 }
 .list-group-item{
   background-color: #999;
   border-radius: 0;
   border: 1px solid #444;
+}
+#map{
+  height: 25em;
+
+}
+#mode{
+  margin-bottom: 1em;
+}
+#directionsPanel{
+  height: 100%;
+
 }
 #bg{
   background-image: url("/img/bg.jpg");
@@ -37,7 +49,7 @@ body{
   text-decoration: none;
 }
 .input{
-  background-color: transparent;
+  background-color: #fff;
   text-align: center;
   border: 3px solid #444;
   height: 3em;

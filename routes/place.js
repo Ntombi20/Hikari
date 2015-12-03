@@ -76,6 +76,16 @@ module.exports = function(){
           });
     });
   }
+  this.showPlace = function(req, res, next){
+    req.services(function(err, services){
+      		var placeDataService = services.placeDataService;
+          var data = req.params.name;
+          placeDataService.showPlace(data, function(err, rows){
+            if(err)	throw err;
+            res.render('showPlace',{places:rows[0]});
+          });
+    });
+  }
 
   this.postPlace = function(req, res, next){
     req.services(function(err, services){
