@@ -30,6 +30,7 @@ module.exports = function(){
               var place = {};
               for(y in orderedPlaces){
                 if(places[x].name === orderedPlaces[y].key){
+                  place.id = places[x].id;
                   place.name = places[x].name;
                   place.img_url = places[x].img_url;
                   place.description = places[x].description;
@@ -79,8 +80,7 @@ module.exports = function(){
   this.showPlace = function(req, res, next){
     req.services(function(err, services){
       		var placeDataService = services.placeDataService;
-          var data = req.params.name;
-          data = data.replace("%20", " ");
+          var data = req.params.id;
           placeDataService.showPlace(data, function(err, rows){
             if(err)	throw err;
             res.render('showPlace',{places:rows[0]});

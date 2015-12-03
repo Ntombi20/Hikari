@@ -37,7 +37,7 @@ var place = new Place();
 
 app.get('/', place.land);
 app.post('/places', place.listPlaces);
-app.get('/places/:name', place.showPlace);
+app.get('/places/:id', place.showPlace);
 app.get('/places/add', place.showAddPlace);
 app.post('/places/add',multer({ dest: './public/uploads/'}).single('img'), place.postPlace);
 
