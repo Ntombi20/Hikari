@@ -21,11 +21,11 @@ var dbOptions = {
       user: 'tarcode',
       password: 'coder123',
       port: 3306,
-      database: 'pix'
+      database: 'khangela'
 };
 var serviceSetupCallback = function(connection){
 	return {
-		palceDataService : new PlaceDataService(connection)
+		placeDataService : new PlaceDataService(connection)
 	}
 };
 
@@ -37,10 +37,8 @@ var place = new Place();
 
 app.get('/', place.land);
 app.post('/places', place.listPlaces);
-
-//app.get('/places', pic.showPics);
-
-app.post('/places/upload',multer({ dest: './public/uploads/'}).single('image'), place.postPic);
+app.get('/places/add', place.showAddPlace);
+app.post('/places/add',multer({ dest: './public/uploads/'}).single('img'), place.postPlace);
 
 var port = process.env.PORT || 3000;
 var server = app.listen(port, function(){
