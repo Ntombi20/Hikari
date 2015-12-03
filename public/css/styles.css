@@ -12,6 +12,10 @@ body{
   height: 25em;
 
 }
+#you{
+  font-weight: bold;
+  color: #333;
+}
 #mode{
   margin-bottom: 1em;
 }
