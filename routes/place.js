@@ -26,18 +26,18 @@ module.exports = function(){
 
             var orderedPlaces = geolib.orderByDistance(coords, placesMap);
             var placeList = [];
-            for(x in places){
+            for(y in orderedPlaces){
               var place = {};
-              for(y in orderedPlaces){
+              for(x in places){
                 if(places[x].name === orderedPlaces[y].key){
                   place.id = places[x].id;
-                  place.name = places[x].name;
+                  place.name = orderedPlaces[y].key;
                   place.img_url = places[x].img_url;
                   place.description = places[x].description;
                   place.catName = places[x].catName;
                   place.tel = places[x].tel;
                   place.email = places[x].email;
-                  place.distance = orderedPlaces[y].distance;
+                  place.distance = (orderedPlaces[y].distance/1000);
                 }
 
               }
